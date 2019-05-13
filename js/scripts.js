@@ -1,5 +1,18 @@
+/*
+  Public API Request
+  scripts.js
+*/
+
+//fetch data
+
 fetch('https://randomuser.me/api/?results=12&nat=au,gb,ca,us')
+
+//extract JSON content from response
+
   .then(response => response.json())
+
+  //use JSON data to create a card for each individual
+
   .then(data => {
     data.results.map(data => {
     generateCard(
@@ -12,6 +25,8 @@ fetch('https://randomuser.me/api/?results=12&nat=au,gb,ca,us')
       data.location.state
     );
     
+//use JSON data to create a modal window for each individual
+
     generateModalWindow(
       data.picture.large,
       data.name.title,
@@ -27,6 +42,8 @@ fetch('https://randomuser.me/api/?results=12&nat=au,gb,ca,us')
     );
   });
 })
+
+//catch error and provide information in console
 
 .catch(error => console.error('Error:', error));
  
